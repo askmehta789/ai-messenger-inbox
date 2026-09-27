@@ -6,6 +6,7 @@
 
 require_once __DIR__ . '/openai.php';
 require_once __DIR__ . '/anthropic.php';
+require_once __DIR__ . '/gemini.php';
 require_once __DIR__ . '/../graph.php'; // ai_log()
 
 function ai_build_system_prompt(array $business, array $known): string
@@ -75,6 +76,7 @@ function ai_generate_reply(array $cfg, array $business, array $history, string $
         $raw = match ($provider) {
             'openai'    => ai_openai_complete($cfg, $business, $system, $history, $userMessage),
             'anthropic' => ai_anthropic_complete($cfg, $business, $system, $history, $userMessage),
+            'gemini'    => ai_gemini_complete($cfg, $business, $system, $history, $userMessage),
             default     => throw new RuntimeException("Unknown AI provider: $provider"),
         };
     } catch (Throwable $e) {

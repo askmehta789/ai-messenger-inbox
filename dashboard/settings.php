@@ -86,9 +86,10 @@ $pages = $business ? (function () use ($db, $business) {
     <option value="">— choose —</option>
     <option value="openai" <?= $business['ai_provider'] === 'openai' ? 'selected' : '' ?>>OpenAI</option>
     <option value="anthropic" <?= $business['ai_provider'] === 'anthropic' ? 'selected' : '' ?>>Anthropic (Claude)</option>
+    <option value="gemini" <?= $business['ai_provider'] === 'gemini' ? 'selected' : '' ?>>Google (Gemini)</option>
    </select></div>
   <div class="mb-2"><label class="form-label small">Model</label>
-   <input class="form-control" name="ai_model" value="<?= h($business['ai_model']) ?>" placeholder="e.g. gpt-4o-mini or claude-3-5-haiku-20241022"></div>
+   <input class="form-control" name="ai_model" value="<?= h($business['ai_model']) ?>" placeholder="e.g. gpt-4o-mini, claude-3-5-haiku-20241022, or gemini-1.5-flash"></div>
   <div class="mb-2"><label class="form-label small">API key <?= $business['ai_api_key_encrypted'] ? '<span class="text-success">(saved — leave blank to keep it)</span>' : '' ?></label>
    <input type="password" class="form-control" name="ai_api_key" placeholder="Paste API key to set or replace it" autocomplete="off"></div>
   <div class="mb-2"><label class="form-label small">Business context / instructions for the AI</label>
